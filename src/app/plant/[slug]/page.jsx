@@ -1,6 +1,6 @@
 "use client";
 import { React, useEffect, useState } from "react";
-import data from "../../../data.js";
+import data from "../../../data";
 import Image from "next/image";
 
 const BotanicalInfoPage = ({ params }) => {
@@ -50,7 +50,6 @@ const BotanicalInfoPage = ({ params }) => {
     }
   }, [ttsTriggered, imageName]); 
 
-  // Conditional rendering moved outside useEffect
   return (
     <div className="max-w-2xl mx-auto p-8">
       <div className="flex">
