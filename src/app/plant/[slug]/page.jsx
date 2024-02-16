@@ -50,6 +50,7 @@ const BotanicalInfoPage = ({ params }) => {
     }
   }, [ttsTriggered, imageName]); 
 
+  // Conditional rendering moved outside useEffect
   return (
     <div className="max-w-2xl mx-auto p-8">
       <div className="flex">
