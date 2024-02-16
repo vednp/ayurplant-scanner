@@ -3,7 +3,7 @@ import data from "../data";
 
 export default function Hero() {
   return (
-    <div>
+    <div className="p-3">
       <h1 className="text-3xl p-3">Plant Records</h1>
       {data.map((plant) => {
         return (

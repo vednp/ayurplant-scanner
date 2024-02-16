@@ -5,7 +5,6 @@ import Image from "next/image";
 
 const BotanicalInfoPage = ({ params }) => {
   const [ttsTriggered, setTTSTriggered] = useState(false);
-  const [imageSrc, setImageSrc] = useState(null); 
 
   const botanicalInfo = data.find((item) => item.id === params.slug);
 
@@ -42,13 +41,7 @@ const BotanicalInfoPage = ({ params }) => {
       );
       setTTSTriggered(true);
     }
-
-    if (imageName) {
-      import(`../../../../public/plant-images/${imageName}/${imageName}.png`).then((image) => {
-        setImageSrc(image.default);
-      });
-    }
-  }, [ttsTriggered, imageName]); 
+  }, [ttsTriggered, imageName]);
 
   return (
     <div className="max-w-2xl mx-auto p-8">
@@ -74,15 +67,19 @@ const BotanicalInfoPage = ({ params }) => {
 
         <h1 className="text-3xl font-bold mb-4">{botanicalName}</h1>
       </div>
-      {imageSrc && ( 
-        <Image
-          className="p-10"
-          src={imageSrc} 
-          height={300}
-          width={300}
-          alt={`Image of ${botanicalName}`}
-        />
-      )}
+      {[0, 1, 2].map((index) => {
+        const imgPath = `/plant-images/${imageName}/${imageName}-${index}.png`;
+        return (
+          <Image
+            key={index}
+            src={imgPath}
+            height={300}
+            width={300}
+            alt={`Image ${index + 1} of ${botanicalName}`}
+            className="p-3"
+          />
+        );
+      })}
       <div>
         <p>
           <span className="font-semibold">Family:</span> {family}
